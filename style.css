@@ -1,0 +1,42 @@
+#clock{
+    font-weight: bolder !important;
+    font-size: larger !important;
+}
+input[type=time]{
+    font-weight: bolder;
+    background-color: burlywood;
+    border: none;
+}
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+input[type=time]::-webkit-datetime-edit-text{
+    padding-left: 12%;
+}
+input[type=time]::-webkit-datetime-edit-hour-field{
+    background-color: aqua;
+    border-radius: 15%;
+}
+
+input[type=time]::-webkit-datetime-edit-minute-field{
+    background-color: aqua;
+    border-radius: 15%;
+    margin-left: 10%;
+}
+input[type=time]::-webkit-datetime-edit-ampm-field {
+    background-color: aqua;
+    border-radius: 15%;
+}
+#btn{
+    background-color: aqua;
+    color: black;
+}
+#btn:hover{
+    filter: drop-shadow(0 -1mm 2mm rgb(160, 0, 210));
+    scale: 0.9;
+}
+input[type=time]:hover{
+    filter: drop-shadow(0 -1mm 2mm rgb(160, 0, 210));
+}

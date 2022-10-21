@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icons8-timer-50.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.1-dist/css/bootstrap.min.css">
+    <title>timer</title>
+</head>
+<body>
+    <div class="d-flex flex-row flex-wrap col-12 justify-content-center mt-5 mb-5" id="clock">
+        <span id="hours" class=" text-center"></span>:
+        <span id="minuts" class=" text-center"></span>:
+        <span id="seconds" class=" text-center"></span>
+        <span id="dn" class=" text-center"></span>
+    </div>
+    <div class="d-flex flex-row flex-wrap justify-content-evenly w-100">
+        <input type="time" class="form-control w-75 fs-5 fa-times mb-3"  name="endTime" id="" title="please press key in keybord">
+        <button class="btn mb-3" id="btn" onclick="test()">clicke me</button>
+    </div>
+    <div class="ps-5 pe-5">
+        <div class="alert alert-success alert-dismissible fade text-center" role="alert" id="alert">
+            <h4 class="alert-heading"> time end</h4>
+            <p class="text-success">00:00</p>
+            <hr>
+             <button class="btn-close" onclick="input.value=0" data-bs-dismiss="alert"></button>
+         </div>
+    </div>
+    
+    
+</body>
+<script src="./bootstrap-5.2.1-dist/js/bootstrap.bundle.js"></script>
+<script>
+    const input=document.querySelector("input[name='endTime']");
+    const d=new Date();
+
+    function test(){
+        let a=input.value.split(":");
+        var hours=parseInt(a[0])-parseInt(d.getHours());
+        var minuts=parseInt(a[1])-parseInt(d.getMinutes());
+        var mili_minuts=minuts*1000*60;
+        var mili_hours=hours*60*60*1000;
+        var myinterval=setInterval(()=>{
+            if(document.getElementById("alert").classList.contains("show")){
+                document.getElementById("alert").classList.remove("show");
+            }
+            else{
+                document.getElementById("alert").classList.add("show");
+            }
+        },mili_hours+mili_minuts);
+    }
+    function clock(){
+        var _clock=new Date();
+        var _hour=document.getElementById("hours");
+        var _minute=document.getElementById("minuts");
+        var _second=document.getElementById("seconds");
+        var _dayOrnight=document.getElementById("dn");
+        if(_clock.getHours<12){
+            _dayOrnight.innerHTML="AM";
+        }
+        else{
+            _dayOrnight.innerHTML="PM";
+        }
+        _hour.innerHTML=_clock.getHours();
+        if((_clock.getSeconds()<10)){
+            _second.innerHTML="0"+_clock.getSeconds();
+        }
+        else{
+            _second.innerHTML=_clock.getSeconds();
+        }
+        if(_clock.getMinutes()<10){
+            _minute.innerHTML="0"+_clock.getMinutes();
+        }
+        else{
+            _minute.innerHTML=_clock.getMinutes();
+        }
+    }
+    setInterval(clock,1000);
+</script>
+</html>
